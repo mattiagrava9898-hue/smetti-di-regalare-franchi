@@ -1,7 +1,0 @@
-{
-  "name": "smetti-di-regalare-franchi-functions",
-  "version": "1.0.0",
-  "dependencies": {
-    "marked": "^12.0.0"
-  }
-}
