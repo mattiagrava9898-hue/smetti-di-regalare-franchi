@@ -69,19 +69,9 @@
         <div class="container">
             <h2 class="text-center">Guide e Aggiornamenti</h2>
             <p class="text-center mb-large">Gli ultimi articoli dal blog.</p>
-            <div class="grid-2">
-                <article class="card-article">
-                    <span class="category">Pilastro 3a</span>
-                    <h3><a href="#">Perché il 3a assicurativo è (quasi) sempre una pessima idea</a></h3>
-                    <p>Un'analisi spietata sui costi nascosti delle polizze miste e su come un 3a bancario/investito ti salva il capitale.</p>
-                    <span class="date">14 Marzo 2026</span>
-                </article>
-                <article class="card-article">
-                    <span class="category">Costi Fissi</span>
-                    <h3><a href="#">Carte di credito in Svizzera: smetti di pagare per spendere</a></h3>
-                    <p>Dal ricarico sui cambi alle commissioni all'estero. Confronto nudo e crudo tra banche tradizionali e soluzioni come Neon o Yuh.</p>
-                    <span class="date">10 Marzo 2026</span>
-                </article>
+            <div id="lista-articoli" class="grid-2">
+                <!-- Gli articoli vengono caricati dinamicamente da JavaScript -->
+                <p id="articoli-loading" style="color:#6b7280;">Caricamento articoli...</p>
             </div>
         </div>
     </section>
@@ -261,6 +251,42 @@
                 }
             });
         }
+    </script>
+
+    <!-- Caricamento dinamico articoli -->
+    <script>
+        (async () => {
+            const container = document.getElementById('lista-articoli');
+            const loading   = document.getElementById('articoli-loading');
+            if (!container) return;
+
+            try {
+                const res  = await fetch('/.netlify/functions/articoli-lista');
+                const data = await res.json();
+
+                if (!data.articoli || data.articoli.length === 0) {
+                    loading.textContent = 'Nessun articolo pubblicato.';
+                    return;
+                }
+
+                loading.remove();
+
+                data.articoli.forEach(art => {
+                    const card = document.createElement('article');
+                    card.className = 'card-article';
+                    card.innerHTML = `
+                        <span class="category">${art.categoria}</span>
+                        <h3><a href="${art.url}">${art.title}</a></h3>
+                        <p>${art.descrizione}</p>
+                        <span class="date">${art.date}</span>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (err) {
+                loading.textContent = 'Errore nel caricamento degli articoli.';
+                console.error(err);
+            }
+        })();
     </script>
 
 </body>
