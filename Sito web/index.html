@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smetti di Regalare Franchi | Mattia Grava</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-content">
+            <div class="logo">Smetti di Regalare Franchi</div>
+            <nav class="menu">
+                <a href="#simulatori">Gli Strumenti</a>
+                <a href="#articoli">Gli Articoli</a>
+                <a href="#libro">Il Libro</a>
+                <a href="#chi-sono">Chi Sono</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container text-center">
+            <h1>Smetti di regalare franchi al sistema svizzero.</h1>
+            <p class="subtitle">Il sistema svizzero spiegato senza complicazioni. Niente fuffa, niente venditori in cravatta. Solo numeri, strategie e strumenti pratici per ottimizzare tasse, pilastri e investimenti.</p>
+            <div class="email-capture">
+                <p>Il libro è in arrivo. Inserisci la tua email per accedere in anteprima ai simulatori e al primo capitolo.</p>
+                <form id="waitlist-form">
+                    <input type="email" id="email-input" placeholder="La tua migliore email" required>
+                    <button type="submit" class="btn-primary">Voglio l'anteprima</button>
+                </form>
+                <div id="form-message" class="hidden"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="chi-sono" class="section bg-light">
+        <div class="container narrow">
+            <h2>Nessuna formula magica. Solo pragmatismo.</h2>
+            <p>Sono Mattia. Ho 28 anni, vivo a Frauenfeld e faccio l'elettricista. Guadagno 79.000 CHF lordi l'anno e ho un piano molto chiaro: smettere di lavorare a 48 anni e trasferirmi in un posto dove la vita costa meno.</p>
+            <p>Non sono un consulente finanziario. Non sono qui per venderti una polizza mista o per gestire i tuoi soldi. Sono qui perché mi sono stufato di vedere persone che si fanno dissanguare da casse malati sbagliate e terzi pilastri che arricchiscono solo chi li vende. Ho studiato, ho applicato e ho scritto il manuale che avrei voluto leggere io.</p>
+        </div>
+    </section>
+
+    <section id="simulatori" class="section">
+        <div class="container">
+            <h2 class="text-center">I Simulatori. La matematica non mente.</h2>
+            <p class="text-center mb-large">Strumenti proprietari riservati agli iscritti per vedere esattamente dove stai perdendo soldi.</p>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Risparmio 3a &amp; Riscatti</h3>
+                    <p>Calcola al franco quanto risparmi di tasse versando nel Terzo Pilastro e quanto recuperi con il riscatto retroattivo. Dati ufficiali ESTV per il tuo Comune.</p>
+                    <button id="btn-apri-sim-3a" class="btn-primary" style="margin-top:1.5rem;width:100%;">
+                        Apri Simulatore
+                    </button>
+                </div>
+                <div class="card">
+                    <h3>Franchigia Cassa Malati</h3>
+                    <p>Stima le tue spese mediche e scopri matematicamente qual è l'unica franchigia che ha senso per te: 300 o 2500 CHF.</p>
+                    <span class="highlight" style="display:block;margin-top:1.5rem;">Prossimamente &rarr;</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="articoli" class="section bg-light">
+        <div class="container">
+            <h2 class="text-center">Guide e Aggiornamenti</h2>
+            <p class="text-center mb-large">Gli ultimi articoli dal blog.</p>
+            <div class="grid-2">
+                <article class="card-article">
+                    <span class="category">Pilastro 3a</span>
+                    <h3><a href="#">Perché il 3a assicurativo è (quasi) sempre una pessima idea</a></h3>
+                    <p>Un'analisi spietata sui costi nascosti delle polizze miste e su come un 3a bancario/investito ti salva il capitale.</p>
+                    <span class="date">14 Marzo 2026</span>
+                </article>
+                <article class="card-article">
+                    <span class="category">Costi Fissi</span>
+                    <h3><a href="#">Carte di credito in Svizzera: smetti di pagare per spendere</a></h3>
+                    <p>Dal ricarico sui cambi alle commissioni all'estero. Confronto nudo e crudo tra banche tradizionali e soluzioni come Neon o Yuh.</p>
+                    <span class="date">10 Marzo 2026</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="libro" class="section bg-dark">
+        <div class="container narrow text-center">
+            <h2>Cosa troverai nel libro</h2>
+            <ul class="feature-list">
+                <li><strong>I Tre Pilastri:</strong> AVS, LPP e 3a. Come leggere i certificati e sfruttare le deduzioni.</li>
+                <li><strong>Tasse:</strong> Come smettere di pagare più del dovuto, conoscendo le regole.</li>
+                <li><strong>Investimenti:</strong> ETF globali, interesse composto e l'uso di piattaforme a basso costo.</li>
+                <li><strong>La Checklist del Lunedì:</strong> Le azioni pratiche da fare subito.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2026 Mattia Grava. Tutti i diritti riservati.</p>
+            <p class="disclaimer">Non sono un consulente finanziario. I contenuti di questo sito e del libro sono a scopo informativo. Fai sempre le tue ricerche.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL SIMULATORE 3A — unica istanza, gestita da .modal-overlay + .active -->
+    <div id="modal-sim-3a" class="modal-overlay">
+        <div class="modal-content">
+
+            <button id="btn-chiudi-sim-3a" class="btn-close-modal" title="Chiudi">&times;</button>
+
+            <div class="text-center" style="margin-bottom:2rem;">
+                <h3 style="font-size:1.75rem;font-weight:900;color:#111827;margin-bottom:0.5rem;">Calcolatore Risparmio 3a</h3>
+                <p style="color:#6b7280;">Dati ufficiali ESTV per il tuo Comune. Precisione al franco.</p>
+            </div>
+
+            <form id="form-3a" onsubmit="event.preventDefault();">
+
+                <!-- TIPO CALCOLO -->
+                <div style="margin-bottom:1.5rem;">
+                    <h4 style="font-size:0.8rem;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1rem;">1. Cosa vuoi ottimizzare?</h4>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+                        <label style="cursor:pointer;">
+                            <input type="radio" name="tipo_calcolo" value="ordinario" style="display:none;" checked>
+                            <div class="radio-card radio-card-checked" id="card-ordinario">
+                                <span style="display:block;font-weight:700;font-size:1.05rem;">Versamento Ordinario</span>
+                                <span style="font-size:0.8rem;color:#6b7280;">max 7'258 CHF/anno</span>
+                            </div>
+                        </label>
+                        <label style="cursor:pointer;">
+                            <input type="radio" name="tipo_calcolo" value="riscatto" style="display:none;">
+                            <div class="radio-card" id="card-riscatto">
+                                <span style="display:block;font-weight:700;font-size:1.05rem;">Riscatto Retroattivo</span>
+                                <span style="font-size:0.8rem;color:#6b7280;">anni non versati</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div id="input-ordinario" style="background:#fef2f2;padding:1.25rem;border-radius:12px;border:1px solid #fecaca;">
+                        <label style="display:block;font-size:0.875rem;font-weight:600;margin-bottom:0.5rem;color:#1f2937;">Quanto vuoi versare quest'anno? (CHF)</label>
+                        <input type="number" id="sim-versamento" class="form-input" style="font-weight:700;font-size:1.1rem;" value="7258" min="1" max="7258">
+                        <p style="font-size:0.75rem;color:#dc2626;margin-top:0.5rem;">Massimo 2026: 7'258 CHF</p>
+                    </div>
+                    <div id="input-riscatto" class="hidden" style="background:#fef2f2;padding:1.25rem;border-radius:12px;border:1px solid #fecaca;">
+                        <label style="display:block;font-size:0.875rem;font-weight:600;margin-bottom:0.5rem;color:#1f2937;">Ammontare totale del riscatto (CHF)</label>
+                        <input type="number" id="sim-riscatto-totale" class="form-input" style="font-weight:700;font-size:1.1rem;" placeholder="es. 25000" min="1">
+                        <p style="font-size:0.75rem;color:#6b7280;margin-top:0.5rem;">Totale degli anni mancanti che vuoi recuperare.</p>
+                    </div>
+                </div>
+
+                <!-- DATI FISCALI -->
+                <div style="display:flex;flex-direction:column;gap:1rem;">
+
+                    <div>
+                        <label style="display:block;font-size:0.875rem;font-weight:600;margin-bottom:0.25rem;color:#374151;">NPA (Codice Postale Svizzero)</label>
+                        <input type="number" id="sim-npa" class="form-input" placeholder="es. 8500" min="1000" max="9999" required>
+                        <p id="sim-comune-nome" style="font-size:0.8rem;color:#6b7280;margin-top:0.25rem;min-height:1.2em;"></p>
+                        <!-- Select comune: appare solo se l'NPA ha più risultati -->
+                        <select id="sim-comune-select" class="form-input hidden" style="margin-top:0.5rem;"></select>
+                    </div>
+
+                    <div>
+                        <label style="display:block;font-size:0.875rem;font-weight:600;margin-bottom:0.25rem;color:#374151;">Situazione fiscale</label>
+                        <select id="sim-permesso" class="form-input" required>
+                            <option value="C_CH">Cittadino CH / Permesso C — dichiarazione ordinaria</option>
+                            <option value="B">Permesso B — ritenuta alla fonte</option>
+                            <option value="F_nuovo">Frontaliere — nuovo accordo (dal 2024)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label style="display:block;font-size:0.875rem;font-weight:600;margin-bottom:0.25rem;color:#374151;">Reddito Netto (CHF)</label>
+                        <input type="number" id="sim-reddito" class="form-input" style="font-weight:700;" placeholder="es. 53000" required>
+                        <div style="margin-top:0.5rem;padding:0.75rem;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;">
+                            <p style="font-size:0.8rem;font-weight:700;color:#15803d;margin-bottom:0.25rem;">📄 Dove trovo questo numero?</p>
+                            <p style="font-size:0.75rem;color:#166534;line-height:1.6;">Sul <strong>certificato di salario (Lohnausweis)</strong> che ricevi dal datore di lavoro ogni gennaio: è il <strong>campo 11 — Salario netto</strong>. Non usare la busta paga mensile né il contratto.</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label style="display:block;font-size:0.875rem;font-weight:600;margin-bottom:0.25rem;color:#374151;">Stato Civile</label>
+                        <select id="sim-stato-civile" class="form-input" required>
+                            <option value="single">Celibe/Nubile</option>
+                            <option value="coniugato">Coniugato/a</option>
+                        </select>
+                    </div>
+
+                    <!-- CAMPI PARTNER — visibili solo se coniugato -->
+                    <div id="sezione-partner" class="hidden" style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:1.25rem;display:flex;flex-direction:column;gap:1rem;">
+                        <h4 style="font-size:0.8rem;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.05em;margin:0;">Dati del/la partner</h4>
+
+                        <div>
+                            <label style="display:block;font-size:0.875rem;font-weight:600;margin-bottom:0.25rem;color:#374151;">Reddito Netto Partner (CHF)</label>
+                            <input type="number" id="sim-reddito-partner" class="form-input" style="font-weight:700;" placeholder="0 se non lavora">
+                            <p style="font-size:0.75rem;color:#6b7280;margin-top:0.25rem;">Campo 11 del certificato di salario del partner. Lascia 0 se non lavora o non ha reddito.</p>
+                        </div>
+
+                        <div>
+                            <label style="display:block;font-size:0.875rem;font-weight:600;margin-bottom:0.25rem;color:#374151;">Chiesa del/la Partner</label>
+                            <select id="sim-religione-partner" class="form-input">
+                                <option value="nessuna">Nessuna</option>
+                                <option value="cattolica">Cattolica</option>
+                                <option value="riformata">Riformata</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label style="display:block;font-size:0.875rem;font-weight:600;margin-bottom:0.25rem;color:#374151;">Figli a carico</label>
+                        <input type="number" id="sim-figli" class="form-input" value="0" min="0" required>
+                    </div>
+
+                    <!-- ETÀ FIGLI — visibile solo se figli > 0 -->
+                    <div id="sezione-figli-eta" class="hidden" style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:1.25rem;">
+                        <h4 style="font-size:0.8rem;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1rem;">Età dei figli</h4>
+                        <div id="figli-eta-container" style="display:flex;flex-direction:column;gap:0.75rem;"></div>
+                    </div>
+
+                    <div>
+                        <label style="display:block;font-size:0.875rem;font-weight:600;margin-bottom:0.25rem;color:#374151;">La tua Appartenenza alla Chiesa</label>
+                        <select id="sim-religione" class="form-input" required>
+                            <option value="nessuna">Nessuna (No imposta di culto)</option>
+                            <option value="cattolica">Cattolica</option>
+                            <option value="riformata">Riformata</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn-primary" style="width:100%;padding:1rem;font-size:1.1rem;margin-top:1.5rem;border-radius:12px;display:flex;justify-content:center;align-items:center;gap:0.75rem;">
+                    <span id="testo-btn-calcola">Calcola il mio Risparmio Fiscale</span>
+                    <span id="loader-calcola" class="hidden">⏳</span>
+                </button>
+
+            </form>
+
+            <!-- RISULTATO -->
+            <div id="sim-risultato" class="hidden" style="margin-top:2rem;padding:2rem;background:#111827;color:#f9fafb;border-radius:16px;text-align:center;">
+                <h4 style="font-size:0.8rem;color:#9ca3af;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem;">Meno tasse, più soldi per te:</h4>
+                <div id="sim-cifra-risparmio" style="font-size:3.5rem;font-weight:900;color:#4ade80;margin-bottom:1rem;line-height:1.1;">—</div>
+                <div style="width:3rem;height:3px;background:#4ade80;margin:0 auto 1rem;border-radius:2px;"></div>
+                <p id="sim-dettaglio-risparmio" style="color:#d1d5db;font-size:0.95rem;line-height:1.7;"></p>
+                <p style="color:#4b5563;font-size:0.75rem;margin-top:1rem;">Aliquota marginale calcolata dall'ESTV per il tuo Comune. Il risparmio reale dipende dalla tua dichiarazione fiscale definitiva — piccole differenze sono normali.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
