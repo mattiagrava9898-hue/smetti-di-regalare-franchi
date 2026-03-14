@@ -1,0 +1,32 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "img/articoli"
+public_folder: "/img/articoli"
+
+locale: it
+
+collections:
+  - name: "articoli"
+    label: "Articoli"
+    folder: "_articoli"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titolo", name: "title", widget: "string" }
+      - { label: "Data di pubblicazione", name: "date", widget: "datetime", format: "DD MMMM YYYY", date_format: "DD MMMM YYYY", time_format: false }
+      - label: "Categoria"
+        name: "categoria"
+        widget: "select"
+        options:
+          - { label: "Previdenza", value: "previdenza" }
+          - { label: "Risparmio", value: "risparmio" }
+          - { label: "Investimenti", value: "investimenti" }
+          - { label: "Strategie di Uscita", value: "strategie-di-uscita" }
+          - { label: "Frontalieri", value: "frontalieri" }
+          - { label: "Imposta alla Fonte", value: "imposta-alla-fonte" }
+      - { label: "Descrizione breve", name: "descrizione", widget: "string", hint: "Appare nella card sulla homepage — max 150 caratteri" }
+      - { label: "Immagine di copertina", name: "immagine", widget: "image", required: false }
+      - { label: "Contenuto", name: "body", widget: "markdown" }
+      - { label: "Pubblicato", name: "pubblicato", widget: "boolean", default: true, hint: "Deseleziona per salvare come bozza" }

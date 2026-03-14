@@ -1,0 +1,8 @@
+[build]
+  functions = "netlify/functions"
+
+[identity]
+  enabled = true
+
+[git-gateway]
+  enabled = true
