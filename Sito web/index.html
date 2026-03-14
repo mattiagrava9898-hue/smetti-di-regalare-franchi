@@ -1,10 +1,11 @@
-<!DOCTYPE html>  
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smetti di Regalare Franchi | Mattia Grava</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
@@ -248,6 +249,19 @@
     </div>
 
     <script src="js/script.js"></script>
+
+    <!-- Netlify Identity: redirect automatico al pannello admin dopo il login -->
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
