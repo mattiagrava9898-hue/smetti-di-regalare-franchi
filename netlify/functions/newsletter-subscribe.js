@@ -3,14 +3,14 @@
  * FILE: netlify/functions/newsletter-subscribe.js
  *
  * Riceve un'email dal form waitlist e la iscrive a Kit (ex ConvertKit)
- * tramite API v4.
+ * tramite API v4. Crea automaticamente il tag "waitlist-libro" se non esiste.
  *
  * Env vars richieste (su Netlify):
- *   KIT_API_KEY   — API Key di Kit (già salvata)
- *   KIT_TAG_ID    — (opzionale) ID del tag per segmentare gli iscritti
+ *   KIT_API_KEY — API Key di Kit (già salvata)
  */
 
 const KIT_API = 'https://api.kit.com/v4';
+const TAG_NAME = 'waitlist-libro';
 
 exports.handler = async (event) => {
     const CORS = {
@@ -54,7 +54,10 @@ exports.handler = async (event) => {
     };
 
     try {
-        // 1. Crea subscriber
+        // 1. Trova o crea il tag "waitlist-libro"
+        const tagId = await getOrCreateTag(headers);
+
+        // 2. Crea subscriber
         const subRes = await fetch(`${KIT_API}/subscribers`, {
             method: 'POST',
             headers,
@@ -62,7 +65,6 @@ exports.handler = async (event) => {
         });
 
         if (!subRes.ok && subRes.status !== 409) {
-            // 409 = già iscritto, va bene lo stesso
             const errBody = await subRes.text();
             console.error(`[newsletter] Kit subscriber error ${subRes.status}:`, errBody);
             return {
@@ -72,21 +74,19 @@ exports.handler = async (event) => {
             };
         }
 
-        // 2. Se c'è un tag configurato, taggalo
-        const TAG_ID = process.env.KIT_TAG_ID;
-        if (TAG_ID) {
-            const tagRes = await fetch(`${KIT_API}/tags/${TAG_ID}/subscribers`, {
+        // 3. Tagga il subscriber
+        if (tagId) {
+            const tagRes = await fetch(`${KIT_API}/tags/${tagId}/subscribers`, {
                 method: 'POST',
                 headers,
                 body: JSON.stringify({ email_address: email }),
             });
             if (!tagRes.ok) {
-                // Non blocchiamo — il subscriber è già creato
-                console.warn(`[newsletter] Tag ${TAG_ID} fallito:`, await tagRes.text());
+                console.warn(`[newsletter] Tag fallito:`, await tagRes.text());
             }
         }
 
-        console.log(`[newsletter] Iscritto: ${email}`);
+        console.log(`[newsletter] Iscritto: ${email}${tagId ? ` (tag: ${TAG_NAME})` : ''}`);
         return {
             statusCode: 200,
             headers: CORS,
@@ -102,3 +102,43 @@ exports.handler = async (event) => {
         };
     }
 };
+
+/**
+ * Cerca il tag "waitlist-libro" tra i tag esistenti.
+ * Se non esiste, lo crea. Restituisce il tag ID.
+ */
+async function getOrCreateTag(headers) {
+    try {
+        // Cerca tra i tag esistenti
+        const listRes = await fetch(`${KIT_API}/tags`, { headers });
+        if (listRes.ok) {
+            const data = await listRes.json();
+            const tags = data.tags || data.data || [];
+            const existing = tags.find(t => t.name === TAG_NAME);
+            if (existing) {
+                return existing.id;
+            }
+        }
+
+        // Non trovato — crealo
+        const createRes = await fetch(`${KIT_API}/tags`, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify({ name: TAG_NAME }),
+        });
+
+        if (createRes.ok) {
+            const created = await createRes.json();
+            const tag = created.tag || created.data || created;
+            console.log(`[newsletter] Tag "${TAG_NAME}" creato con ID: ${tag.id}`);
+            return tag.id;
+        }
+
+        console.warn('[newsletter] Impossibile creare tag:', await createRes.text());
+        return null;
+
+    } catch (err) {
+        console.warn('[newsletter] Errore gestione tag:', err.message);
+        return null;
+    }
+}
