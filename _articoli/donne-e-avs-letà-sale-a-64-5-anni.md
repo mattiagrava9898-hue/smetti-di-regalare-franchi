@@ -6,58 +6,65 @@ descrizione: Nel 2026 l'aumento graduale dell'età pensionabile per le donne
   (Riforma AVS 21) segna un altro step.
 pubblicato: true
 ---
-Il 19 marzo 2026 la Banca Nazionale Svizzera si siede al tavolo per la riunione trimestrale di politica monetaria. L'esito non è ancora noto mentre scrivo questo articolo.
+La riforma AVS 21 è entrata in vigore il 1° gennaio 2024. E adesso, due anni dopo, i suoi effetti concreti iniziano a farsi sentire in modo tangibile per le donne svizzere.
  
-Ma la domanda che conta non è "cosa deciderà la BNS domani". È "cosa significa per te qualunque cosa decida".
+Nel 2026, le donne nate nel 1962 raggiungono l'età di riferimento a **64 anni e 6 mesi**. Cioè 64,5 anni.
  
----
- 
-### Il contesto: da dove veniamo
- 
-Nel 2023 e 2024 la BNS ha tagliato i tassi in modo aggressivo, passando dall'1,75% allo 0,25%. Una corsa verso il basso che ha riportato la Svizzera in territorio di tassi quasi zero, uno scenario che chiunque abbia un conto corrente conosce bene: il saldo cresce di qualche centesimo all'anno, mentre i costi del conto li erode più in fretta.
- 
-L'inflazione svizzera nel frattempo è rimasta bassa, sotto il 2%. Questo ha dato alla BNS margine per tagliare senza innescare spirali inflazionistiche.
- 
-La domanda oggi è: c'è ancora spazio per scendere, o siamo già ai minimi?
+Non è un errore. È la transizione in corso.
  
 ---
  
-### Cosa succede se taglia ancora
+### Il piano di avanzamento
  
-Un ulteriore taglio dei tassi (ad esempio allo 0% o in territorio negativo) avrebbe effetti precisi:
+L'AVS 21 ha stabilito che l'età di riferimento delle donne salga gradualmente da 64 a 65 anni, seguendo questo schema:
  
-**Per chi ha un mutuo a tasso variabile o SARON:** buone notizie a breve termine. Le rate scendono. Ma attenzione: i tassi bassi durano finché durano.
+- **Donne nate prima del 1961:** età di riferimento 64 anni (nessun cambiamento)
+- **Nate nel 1961:** 64 anni e 3 mesi (2025)
+- **Nate nel 1962:** 64 anni e 6 mesi (2026) ← **Siamo qui**
+- **Nate nel 1963:** 64 anni e 9 mesi (2027)
+- **Nate nel 1964 e successive:** 65 anni (da 2029 in poi)
  
-**Per chi tiene soldi fermi sul conto:** pessime notizie. I conti correnti non rendono niente con i tassi attuali. Con un taglio ulteriore, le banche potrebbero addirittura reintrodurre commissioni sui depositi alti, come già accaduto tra il 2015 e il 2022.
- 
-**Per chi investe in ETF azionari:** storicamente i tagli dei tassi supportano i mercati azionari (meno rendimento alternativo sulle obbligazioni → più attrattività delle azioni). Non è una legge, ma è un pattern ricorrente.
- 
-**Per il pilastro 3a in fondi:** dipende dalla composizione del fondo. Un 3a investito in azioni globali è meno sensibile ai movimenti della BNS rispetto a uno parcheggiato in un conto bancario.
- 
----
- 
-### Cosa succede se non taglia (attesa)
- 
-La BNS mantiene i tassi stabili. Lo scenario più probabile se l'economia svizzera tiene e il franco rimane gestibile.
- 
-Per te cambia poco nel breve. I mutui rimangono dove sono, i conti continuano a rendere quasi zero, e i mercati attendono il prossimo segnale.
+L'obiettivo finale è pareggiare l'età di riferimento tra uomini e donne a 65 anni. Entro il 2028, il sistema sarà stabilizzato.
  
 ---
  
-### La lezione che non passa di moda
+### Età di "riferimento" non significa obbligo
  
-Il tasso della BNS decide il costo del denaro nel breve periodo. Non decide il rendimento del tuo patrimonio nel lungo periodo.
+Questo punto crea confusione, e vale la pena chiarirlo.
  
-Se hai soldi fermi su un conto corrente in attesa della mossa giusta, stai già perdendo in termini reali. L'inflazione, anche bassa, erode il potere d'acquisto. L'attesa ha sempre un costo, anche quando sembra gratuita.
+L'età di riferimento AVS non è l'età obbligatoria di pensionamento. È il punto zero del sistema: il momento in cui ricevi la rendita piena, senza bonus né penali.
  
-Il 3a in fondi azionari, il LPP investito correttamente, gli ETF: questi strumenti performano su orizzonti di 10, 20, 30 anni. Non su base trimestrale.
+Puoi scegliere di:
  
-La BNS decide il tasso. Tu decidi il piano.
+**Anticipare:** tra 1 e 2 anni prima dell'età di riferimento. Il costo è una riduzione permanente della rendita: **6,8% per ogni anno di anticipo**. Un anno prima → rendita ridotta del 6,8% per sempre. Due anni prima → riduzione del 13,6%.
+ 
+**Posticipare:** tra 1 e 5 anni dopo l'età di riferimento. Il bonus è un supplemento permanente, fino al 31,5% se aspetti i 70 anni.
+ 
+La flessibilità esiste. Ma ogni scelta ha un prezzo che accompagna la rendita per tutta la vita.
  
 ---
  
-*Articolo scritto prima della riunione del 19 marzo 2026. Per il risultato aggiornato, consulta il sito ufficiale della BNS: snb.ch.*
+### La misura compensativa (che quasi nessuno conosce)
  
-*Non sono un consulente finanziario.*
+Per le donne delle fasce di transizione (nate tra il 1961 e il 1964), la riforma ha previsto misure compensative:
+ 
+- Contributi AVS ridotti in caso di anticipo della riscossione
+- Soglie di reddito agevolate per chi anticipa ma continua a lavorare parzialmente
+ 
+Le condizioni precise dipendono dall'anno di nascita e dalla situazione individuale. Il sito dell'AHV-IV (ahv-iv.ch) ha i dettagli per ogni fascia.
+ 
+---
+ 
+### Il nodo politico irrisolto
+ 
+L'AVS 21 ha allineato le età di riferimento. Ma non ha eliminato la "penalizzazione del matrimonio" previdenziale.
+ 
+Le coppie sposate, come spiegato nel libro, sono ancora soggette al tetto del 150% sulla rendita combinata. Chi guadagnava meno durante il matrimonio (spesso la donna) continua a vedersi distribuire i contributi tramite lo splitting in caso di divorzio.
+ 
+L'8 marzo 2026, lo stesso giorno del voto sul contante, il popolo ha approvato l'imposizione individuale, che elimina la penalizzazione fiscale del matrimonio. Una vittoria sul fronte delle tasse. Ma il plafond AVS rimane dov'è. Due binari separati, e quello previdenziale non ha ancora trovato chi voglia metterci mano seriamente.
+ 
+---
+ 
+*Non sono un consulente finanziario. Per calcolare la tua rendita stimata, usa il simulatore sul sito AHV-IV.*
  
 ---
