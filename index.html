@@ -37,10 +37,20 @@
     </section>
 
     <section id="chi-sono" class="section bg-light">
-        <div class="container narrow">
-            <h2>Nessuna formula magica. Solo pragmatismo.</h2>
-            <p>Sono Mattia. Ho 28 anni, vivo a Frauenfeld e faccio l'elettricista. Guadagno 79.000 CHF lordi l'anno e ho un piano molto chiaro: smettere di lavorare a 48 anni e trasferirmi in un posto dove la vita costa meno.</p>
-            <p>Non sono un consulente finanziario. Non sono qui per venderti una polizza mista o per gestire i tuoi soldi. Sono qui perché mi sono stufato di vedere persone che si fanno dissanguare da casse malati sbagliate e terzi pilastri che arricchiscono solo chi li vende. Ho studiato, ho applicato e ho scritto il manuale che avrei voluto leggere io.</p>
+        <div class="container">
+            <div class="chi-sono-layout">
+                <div class="chi-sono-foto">
+                    <div class="foto-rotator">
+                        <img src="img/mattia-trasformatori.jpg" alt="Mattia Grava al lavoro con i trasformatori" class="foto-slide foto-active">
+                        <img src="img/mattia-palo.jpg" alt="Mattia Grava su un palo elettrico al tramonto" class="foto-slide">
+                    </div>
+                </div>
+                <div class="chi-sono-testo">
+                    <h2>Nessuna formula magica. Solo pragmatismo.</h2>
+                    <p>Sono Mattia. Ho 28 anni, vivo a Frauenfeld e faccio l'elettricista specializzato in reti di distribuzione. Ho un piano molto chiaro: smettere di lavorare a 48 anni e trasferirmi in un posto dove la vita costa meno.</p>
+                    <p>Non sono un consulente finanziario. Non sono qui per venderti una polizza mista o per gestire i tuoi soldi. Sono qui perché mi sono stufato di vedere persone che si fanno dissanguare da casse malati sbagliate e terzi pilastri che arricchiscono solo chi li vende. Ho studiato, ho applicato e ho scritto il manuale che avrei voluto leggere io.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -286,6 +296,20 @@
                 loading.textContent = 'Errore nel caricamento degli articoli.';
                 console.error(err);
             }
+        })();
+    </script>
+
+    <!-- Rotazione foto Chi Sono -->
+    <script>
+        (() => {
+            const slides = document.querySelectorAll('.foto-slide');
+            if (slides.length < 2) return;
+            let current = 0;
+            setInterval(() => {
+                slides[current].classList.remove('foto-active');
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('foto-active');
+            }, 5000);
         })();
     </script>
 
