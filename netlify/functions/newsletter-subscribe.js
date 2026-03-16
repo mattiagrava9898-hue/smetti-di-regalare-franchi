@@ -5,8 +5,7 @@
  * Riceve un'email dal form waitlist e la iscrive a Kit (ex ConvertKit)
  * tramite API v4. Crea automaticamente il tag "waitlist-libro" se non esiste.
  *
- * Env vars richieste (su Netlify):
- *   KIT_API_KEY — API Key di Kit (già salvata)
+ * Env var richiesta su Netlify: KIT_API_KEY
  */
 
 const KIT_API = 'https://api.kit.com/v4';
@@ -19,7 +18,6 @@ exports.handler = async (event) => {
         'Access-Control-Allow-Headers': 'Content-Type',
     };
 
-    // Gestisci preflight CORS
     if (event.httpMethod === 'OPTIONS') {
         return { statusCode: 204, headers: CORS, body: '' };
     }
@@ -28,7 +26,8 @@ exports.handler = async (event) => {
         return { statusCode: 405, headers: CORS, body: JSON.stringify({ error: 'Method Not Allowed' }) };
     }
 
-    const API_KEY = process.env.KIT_API_KEY;
+    // Leggi API key dalle env vars di Netlify
+    const API_KEY = Netlify.env.get('KIT_API_KEY');
     if (!API_KEY) {
         console.error('[newsletter] KIT_API_KEY mancante');
         return { statusCode: 500, headers: CORS, body: JSON.stringify({ error: 'Configurazione mancante' }) };
@@ -42,13 +41,13 @@ exports.handler = async (event) => {
         return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'JSON non valido' }) };
     }
 
-    // Validazione email basilare
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Email non valida' }) };
     }
 
+    // Header per Kit API v4 — usa X-Kit-Api-Key, NON Authorization Bearer
     const headers = {
-        'Authorization': `Bearer ${API_KEY}`,
+        'X-Kit-Api-Key': API_KEY,
         'Content-Type': 'application/json',
         'Accept': 'application/json',
     };
@@ -57,14 +56,14 @@ exports.handler = async (event) => {
         // 1. Trova o crea il tag "waitlist-libro"
         const tagId = await getOrCreateTag(headers);
 
-        // 2. Crea subscriber
+        // 2. Crea subscriber (upsert — se esiste già non dà errore)
         const subRes = await fetch(`${KIT_API}/subscribers`, {
             method: 'POST',
             headers,
             body: JSON.stringify({ email_address: email }),
         });
 
-        if (!subRes.ok && subRes.status !== 409) {
+        if (!subRes.ok) {
             const errBody = await subRes.text();
             console.error(`[newsletter] Kit subscriber error ${subRes.status}:`, errBody);
             return {
@@ -109,18 +108,14 @@ exports.handler = async (event) => {
  */
 async function getOrCreateTag(headers) {
     try {
-        // Cerca tra i tag esistenti
         const listRes = await fetch(`${KIT_API}/tags`, { headers });
         if (listRes.ok) {
             const data = await listRes.json();
             const tags = data.tags || data.data || [];
             const existing = tags.find(t => t.name === TAG_NAME);
-            if (existing) {
-                return existing.id;
-            }
+            if (existing) return existing.id;
         }
 
-        // Non trovato — crealo
         const createRes = await fetch(`${KIT_API}/tags`, {
             method: 'POST',
             headers,
