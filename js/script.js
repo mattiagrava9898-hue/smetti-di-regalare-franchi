@@ -9,58 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const CONFESSION   = { 'nessuna': 5, 'cattolica': 3, 'riformata': 1 };
 
     // ============================================================
-    // WAITLIST
+    // WAITLIST — Iscrizione newsletter via Kit
     // ============================================================
-    /* =============================================================
-   ISTRUZIONI — Integrazione Newsletter Kit
-   =============================================================
-
-   FILE DA AGGIUNGERE:
-   → netlify/functions/newsletter-subscribe.js  (il file allegato)
-
-   FILE DA MODIFICARE:
-   → index.html — sostituisci SOLO il blocco <script> del waitlist
-                   (quello dentro js/script.js va bene così, non toccarlo)
-
-   ENV VAR GIÀ SALVATA SU NETLIFY:
-   → KIT_API_KEY = y6CUtqyfOez0wAeqhQOLWA  ✓
-
-   OPZIONALE (ma consigliato):
-   Su Kit (https://app.kit.com) crea un tag "waitlist-libro",
-   poi copia il suo ID numerico e salvalo su Netlify come:
-   → KIT_TAG_ID = {il numero}
-   Così puoi filtrare chi si è iscritto per l'anteprima del libro.
-
-   ============================================================= */
-
-
-/* =============================================================
-   SNIPPET — Sostituisci in index.html il blocco waitlist-form
-   =============================================================
-
-   Cerca questo blocco nel tuo index.html (dentro la sezione .hero):
-*/
-
-// ❌ VECCHIO (da rimuovere) — è dentro il tag <script> in fondo al body,
-//    oppure nel DOMContentLoaded di script.js:
-//
-//    const waitlistForm = document.getElementById('waitlist-form');
-//    if (waitlistForm) {
-//        waitlistForm.addEventListener('submit', (e) => {
-//            e.preventDefault();
-//            waitlistForm.style.display = 'none';
-//            const msg = document.getElementById('form-message');
-//            if (msg) {
-//                msg.textContent = "Ottima scelta. Ti scriverò appena l'anteprima sarà pronta.";
-//                msg.classList.remove('hidden');
-//            }
-//        });
-//    }
-
-
-// ✅ NUOVO (da mettere al posto del vecchio):
-
-/*
     const waitlistForm = document.getElementById('waitlist-form');
     if (waitlistForm) {
         waitlistForm.addEventListener('submit', async (e) => {
@@ -107,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-*/
 
     // ============================================================
     // MODAL
