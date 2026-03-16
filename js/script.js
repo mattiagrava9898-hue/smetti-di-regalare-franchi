@@ -11,18 +11,103 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================================
     // WAITLIST
     // ============================================================
+    /* =============================================================
+   ISTRUZIONI — Integrazione Newsletter Kit
+   =============================================================
+
+   FILE DA AGGIUNGERE:
+   → netlify/functions/newsletter-subscribe.js  (il file allegato)
+
+   FILE DA MODIFICARE:
+   → index.html — sostituisci SOLO il blocco <script> del waitlist
+                   (quello dentro js/script.js va bene così, non toccarlo)
+
+   ENV VAR GIÀ SALVATA SU NETLIFY:
+   → KIT_API_KEY = y6CUtqyfOez0wAeqhQOLWA  ✓
+
+   OPZIONALE (ma consigliato):
+   Su Kit (https://app.kit.com) crea un tag "waitlist-libro",
+   poi copia il suo ID numerico e salvalo su Netlify come:
+   → KIT_TAG_ID = {il numero}
+   Così puoi filtrare chi si è iscritto per l'anteprima del libro.
+
+   ============================================================= */
+
+
+/* =============================================================
+   SNIPPET — Sostituisci in index.html il blocco waitlist-form
+   =============================================================
+
+   Cerca questo blocco nel tuo index.html (dentro la sezione .hero):
+*/
+
+// ❌ VECCHIO (da rimuovere) — è dentro il tag <script> in fondo al body,
+//    oppure nel DOMContentLoaded di script.js:
+//
+//    const waitlistForm = document.getElementById('waitlist-form');
+//    if (waitlistForm) {
+//        waitlistForm.addEventListener('submit', (e) => {
+//            e.preventDefault();
+//            waitlistForm.style.display = 'none';
+//            const msg = document.getElementById('form-message');
+//            if (msg) {
+//                msg.textContent = "Ottima scelta. Ti scriverò appena l'anteprima sarà pronta.";
+//                msg.classList.remove('hidden');
+//            }
+//        });
+//    }
+
+
+// ✅ NUOVO (da mettere al posto del vecchio):
+
+/*
     const waitlistForm = document.getElementById('waitlist-form');
     if (waitlistForm) {
-        waitlistForm.addEventListener('submit', (e) => {
+        waitlistForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            waitlistForm.style.display = 'none';
+            const emailInput = document.getElementById('email-input');
+            const btn = waitlistForm.querySelector('button');
             const msg = document.getElementById('form-message');
-            if (msg) {
-                msg.textContent = "Ottima scelta. Ti scriverò appena l'anteprima sarà pronta.";
+            const email = emailInput.value.trim();
+
+            if (!email) return;
+
+            // Disabilita il bottone durante l'invio
+            btn.disabled = true;
+            btn.textContent = 'Un momento...';
+
+            try {
+                const res = await fetch('/.netlify/functions/newsletter-subscribe', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email }),
+                });
+
+                const data = await res.json();
+
+                if (res.ok && data.ok) {
+                    waitlistForm.style.display = 'none';
+                    msg.textContent = "Ottima scelta. Ti scriverò appena l'anteprima sarà pronta.";
+                    msg.style.color = '#16a34a';
+                    msg.style.fontWeight = '600';
+                    msg.classList.remove('hidden');
+                } else {
+                    msg.textContent = data.error || 'Qualcosa è andato storto. Riprova.';
+                    msg.style.color = '#dc2626';
+                    msg.classList.remove('hidden');
+                    btn.disabled = false;
+                    btn.textContent = 'Voglio l\'anteprima';
+                }
+            } catch (err) {
+                msg.textContent = 'Errore di connessione. Riprova tra poco.';
+                msg.style.color = '#dc2626';
                 msg.classList.remove('hidden');
+                btn.disabled = false;
+                btn.textContent = 'Voglio l\'anteprima';
             }
         });
     }
+*/
 
     // ============================================================
     // MODAL
