@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const CONFESSION   = { 'nessuna': 5, 'cattolica': 3, 'riformata': 1 };
 
     // ============================================================
-    // WAITLIST — Iscrizione newsletter via Kit
+    // WAITLIST — Iscrizione newsletter viia Kit
     // ============================================================
     const waitlistForm = document.getElementById('waitlist-form');
     if (waitlistForm) {
